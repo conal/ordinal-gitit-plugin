@@ -1,4 +1,4 @@
--- {-# LANGUAGE #-}
+{-# LANGUAGE PatternGuards #-}
 {-# OPTIONS_GHC -Wall #-}
 ----------------------------------------------------------------------
 -- |
@@ -21,5 +21,17 @@ plugin = PageTransform $ return . processWith (concatMap fixInline)
 
 
 fixInline :: Inline -> [Inline]
-fixInline (Str s) = [Str s]
-fixInline x       = [x]
+fixInline (Str s) | Just (n,suff) <- splitOrdinal s =
+  [Str (show n), Superscript [Str suff]]
+fixInline x = [x]
+
+-- | Split an ordinal string in prefix & suffix. For instance, "21st" ->
+-- Just ("21","st"). Note: allows questionable ordinals like "23th".
+
+splitOrdinal :: String -> Maybe (Int,String)
+splitOrdinal s | [(n,suff)] <- reads s, isOrdinalSuffix suff = Just (n,suff)
+splitOrdinal _ = Nothing
+
+isOrdinalSuffix :: String -> Bool
+isOrdinalSuffix = (`elem` ["st", "nd", "rd", "th"])
+
