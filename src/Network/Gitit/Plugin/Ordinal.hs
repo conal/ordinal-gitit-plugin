@@ -17,7 +17,7 @@ module Network.Gitit.Plugin.Ordinal (plugin, fixInline) where
 import Network.Gitit.Interface
 
 plugin :: Plugin
-plugin = PageTransform $ return . processWith (concatMap fixInline)
+plugin = PageTransform $ return . bottomUp (concatMap fixInline)
 
 
 fixInline :: Inline -> [Inline]

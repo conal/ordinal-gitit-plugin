@@ -1,5 +1,5 @@
 Name:                ordinal-gitit-plugin
-Version:             0.0.0
+Version:             0.0.1
 Cabal-Version:       >= 1.2
 Synopsis:            Gitit plugin: Format ordinals like 21st
 Category:            Text
@@ -17,7 +17,7 @@ Package-Url:         http://github.com/conal/ordinal-gitit-plugin
 Library
   hs-Source-Dirs:      src
   Extensions:
-  Build-Depends:       base<5, gitit
+  Build-Depends:       base<5, gitit >= 0.7.3.12
   Exposed-Modules:     
                        Network.Gitit.Plugin.Ordinal
                        
