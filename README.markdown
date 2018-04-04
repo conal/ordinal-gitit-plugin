@@ -1,3 +1,7 @@
+**Note:** This repository is subsumed by [gitit-to-blog](https://github.com/conal/gitit-to-blog).
+
+* * * * * * * * * * * * * * * * * * * *
+
 This [Haskell](http://haskell.org)-based project is a simple [gitit](http://gitit.net/) plugin that formats ordinals like "21st".
 
 Compile the project with `cabal install ordinal-gitit-plugin` (or just `cabal install` if you've already downloaded the source and are in its main directory).
